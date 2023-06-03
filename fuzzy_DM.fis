@@ -1,0 +1,47 @@
+[System]
+Name='fuzzy_DM'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='probor'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='distance'
+Range=[-15 15]
+NumMFs=3
+MF1='FarNeg':'trapmf',[-15.3 -14.8015873015873 -3.37 0.402]
+MF2='Zero':'trapmf',[-3.29365079365079 -1.23 1.15 3.13]
+MF3='FarPos':'trapmf',[0.405 3.45 15.1190476190476 16.5]
+
+[Input2]
+Name='Distance_variation'
+Range=[-15 15]
+NumMFs=3
+MF1='QuickN':'trapmf',[-15.4 -15.2 -4.24603174603175 -0.0054]
+MF2='Z':'trapmf',[-3.45 -1.15 0.753968253968253 2.98]
+MF3='QuickP':'trapmf',[-0.0829 3.77 14.7 16.6269841269841]
+
+[Output1]
+Name='Speed'
+Range=[0.2 8]
+NumMFs=3
+MF1='Slow':'gaussmf',[0.131442659568383 0.2]
+MF2='Moderate':'gaussmf',[0.645 1.01952380952381]
+MF3='Quick':'gaussmf',[1.94 3.22761904761905]
+
+[Rules]
+1 1, 3 (1) : 1
+1 2, 3 (1) : 1
+1 3, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 1 (1) : 1
+2 3, 1 (1) : 1
+3 1, 3 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
